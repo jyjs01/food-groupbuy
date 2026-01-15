@@ -1,21 +1,25 @@
 "use client";
 
+import { useState } from "react";
 import { useQuery } from "@tanstack/react-query";
-import { fetchProducts } from "@src/lib/api";
-import { toUiProducts } from "@src/lib/products";
+
 import Loading from "@src/components/Loading";
 import Error from "@src/components/Error";
-import { useState } from "react";
+import ProductGrid from "@src/components/ProductGrid";
+
+import { queryKeys } from "@src/constants/queryKeys";
+import { fetchProducts } from "@src/lib/api";
+import { toUiProducts } from "@src/lib/products";
+
 import { ui } from "@src/styles/ui/primitives";
 import { home as s } from "@src/styles/pages/home";
-import ProductGrid from "@src/components/ProductGrid";
 
 
 export default function Page() {
   const [manualLoading, setManualLoading] = useState(false);
 
   const { data, isLoading, isError, refetch, isFetching } = useQuery({
-    queryKey: ["products"],
+    queryKey: queryKeys.products,
     queryFn: fetchProducts,
     select: (res) => toUiProducts(res.content ?? []),
   });
