@@ -53,7 +53,8 @@ export default function ProductCard({ item }: Props) {
 
         <div className="mt-3 flex items-center justify-between text-xs text-(--muted)">
           <span>현재 {item.current}</span>
-          <span>목표 {item.limit}</span>
+          <span>남음 {Math.max(0, item.limit - item.current)}</span>
+          <span>총 {item.limit}</span>
         </div>
 
         <button
