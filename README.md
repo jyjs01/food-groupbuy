@@ -23,3 +23,39 @@ Food-GroupBuy는 과일·채소·밀키트 등 다양한 식자재와 먹거리�
 - **Tailwind CSS**
 - **React-Query**
 - **axios**
+
+<br />
+
+## 주요 폴더 구조
+
+```txt
+app/
+  page.tsx                 # 메인 페이지(데이터 조회/상태 분기/새로고침)
+  layout.tsx               # 전역 레이아웃/메타데이터
+  globals.css              # CSS 변수 및 전역 스타일
+
+src/
+  components/
+    Loading.tsx            # 로딩 UI
+    Error.tsx              # 에러 UI + 재시도
+    ProductGrid.tsx        # 반응형 그리드(1/2/3열)
+    ProductCard.tsx        # 상품 카드(이미지 공간/품절 표시/진행바/버튼)
+
+  constants/
+    queryKeys.ts           # React Query queryKey 중앙 관리
+
+  lib/
+    api.ts                 # API 요청(axios)
+    products.ts            # 데이터 가공/정렬/품절 처리
+    http.ts                # axios 인스턴스/기본 설정(baseURL, timeout)
+    cn.ts                  # className 유틸(클래스 병합/정리)
+
+  styles/
+    pages/
+      home.ts              # 페이지 전용 스타일
+    ui/
+      primitives.ts        # 공통 UI 스타일
+      
+  types/
+    product.ts             # ApiProduct / UiProduct 타입
+```
