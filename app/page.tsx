@@ -8,6 +8,8 @@ import Error from "@src/components/Error";
 import { useState } from "react";
 import { ui } from "@src/styles/ui/primitives";
 import { home as s } from "@src/styles/pages/home";
+import ProductGrid from "@src/components/ProductGrid";
+
 
 export default function Page() {
   const [manualLoading, setManualLoading] = useState(false);
@@ -41,6 +43,11 @@ export default function Page() {
             <div className="min-w-0">
               <h1 className={s.title}>척척밥상 공동구매</h1>
 
+              <p className={s.sub}>
+                품절 상품은 목록 최하단에 표시돼요.
+              </p>
+
+
               {!showLoading && (
                 <div className={`mt-3 ${ui.chipRow}`}>
                   <span className={ui.chip}>전체 {items.length}</span>
@@ -62,7 +69,7 @@ export default function Page() {
           ) : isError ? (
             <Error reset={handleRefresh} />
           ) : (
-            <div className={s.todo}>TODO: ProductGrid</div>
+            <ProductGrid items={items} />
           )}
         </section>
       </div>
