@@ -1,20 +1,17 @@
 @import "tailwindcss";
 
 :root {
-  --background: #cbd5e1;
+  --background: #c7d2e0;  /* 배경: slate-300 계열(살짝 블루그레이) */
   --foreground: #0f172a;
 
-  --surface: #ffffff;
-  --surface-2: #f1f5f9;
-  --border: rgba(15, 23, 42, 0.12);
-  --muted: rgba(15, 23, 42, 0.68);
+  --surface: #e7edf5;     /* 카드: 배경보다 확실히 밝게 */
+  --surface-2: #d7e0ec;   /* hover/패널: surface보다 한 톤 어둡게 */
+  --border: rgba(15, 23, 42, 0.14);
+  --muted: rgba(15, 23, 42, 0.70);
 
-  /* ✅ 스켈레톤 전용 */
-  --skeleton: #e2e8f0;      /* 기본 막대 */
-  --skeleton-2: #d1d9e6;    /* 조금 더 진한 막대(이미지/버튼 등) */
+  --loading: #d7e0ec;     /* 로딩 링/바 기본 */
+  --loading-2: #94a3b8;   /* 로딩 강조(회전 부분) */
 }
-
-
 
 @theme inline {
   --color-background: var(--background);

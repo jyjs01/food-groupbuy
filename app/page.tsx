@@ -6,6 +6,8 @@ import { toUiProducts } from "@src/lib/products";
 import Loading from "@src/components/Loading";
 import Error from "@src/components/Error";
 import { useState } from "react";
+import { ui } from "@src/styles/ui/primitives";
+import { home as s } from "@src/styles/pages/home";
 
 export default function Page() {
   const [manualLoading, setManualLoading] = useState(false);
@@ -29,43 +31,38 @@ export default function Page() {
   };
 
   const showLoading = isLoading || manualLoading;
+  const refreshing = isFetching || manualLoading;
 
   return (
-    <main className="min-h-screen">
-      <div className="mx-auto max-w-5xl p-6">
-        <header className="flex flex-wrap items-end justify-between gap-3">
-          <div>
-            <h1 className="text-xl font-extrabold text-foreground">
-              척척밥상 공동구매
-            </h1>
-            <p className="mt-2 text-sm text-(--muted)">
-              {showLoading
-                ? "상품을 불러오는 중…"
-                : `품절 ${soldOutCount}개 · 전체 ${items.length}개`}
-            </p>
-          </div>
+    <main className={s.page}>
+      <div className={s.wrap}>
+        <header className={`${ui.card} ${s.header}`}>
+          <div className={s.headerRow}>
+            <div className="min-w-0">
+              <h1 className={s.title}>척척밥상 공동구매</h1>
 
-          <button
-            onClick={handleRefresh}
-            disabled={isFetching || manualLoading}
-            className="
-              cursor-pointer rounded-xl border px-3 py-2 text-sm font-semibold transition-colors
-              border-(--border) bg-(--surface) text-foreground
-              hover:bg-(--surface-2) disabled:cursor-not-allowed disabled:opacity-60
-            "
-          >
-            {isFetching || manualLoading ? "갱신 중..." : "새로고침"}
-          </button>
+              {!showLoading && (
+                <div className={`mt-3 ${ui.chipRow}`}>
+                  <span className={ui.chip}>전체 {items.length}</span>
+                  <span className={ui.chip}>품절 {soldOutCount}</span>
+                </div>
+              )}
+            </div>
+
+            <button onClick={handleRefresh} disabled={refreshing} className={ui.button}>
+              <span className={refreshing ? ui.spinnerOn : ui.spinnerOff} aria-hidden="true" />
+              {refreshing ? "갱신 중..." : "새로고침"}
+            </button>
+          </div>
         </header>
 
-        <section className="mt-6">
+        <section className={`${ui.card} ${s.content}`}>
           {showLoading ? (
             <Loading />
           ) : isError ? (
-            <Error reset={() => refetch()} />
+            <Error reset={handleRefresh} />
           ) : (
-            // <ProductGrid items={items} />
-            <div className="text-(--muted)">TODO: ProductGrid</div>
+            <div className={s.todo}>TODO: ProductGrid</div>
           )}
         </section>
       </div>

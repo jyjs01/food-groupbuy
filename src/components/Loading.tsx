@@ -1,17 +1,11 @@
 export default function Loading() {
   return (
-    <div className="rounded-2xl border border-(--border) bg-(--surface) p-6">
+    <div className="p-2">    
       <div className="flex items-center gap-4">
         <div
-          className="
-            h-10 w-10 rounded-full
-            border-4 border-(--skeleton)
-            border-t-(--skeleton-2)
-            animate-spin
-          "
+          className="h-10 w-10 rounded-full border-4 border-(--loading) border-t-(--loading-2) animate-spin"
           aria-label="Loading"
         />
-
         <div>
           <p className="text-sm font-semibold text-foreground">
             상품 목록을 불러오는 중…
