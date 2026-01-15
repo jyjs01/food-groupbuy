@@ -34,6 +34,10 @@ app/
   layout.tsx               # 전역 레이아웃/메타데이터
   globals.css              # CSS 변수 및 전역 스타일
 
+  api/
+    products/
+      route.ts             # 상품 목록 API 라우트
+
 src/
   components/
     Loading.tsx            # 로딩 UI
