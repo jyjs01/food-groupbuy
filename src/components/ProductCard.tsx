@@ -60,7 +60,7 @@ export default function ProductCard({ item }: Props) {
           className={`${ui.button} mt-4 w-full justify-center`}
           disabled={item.soldOut}
         >
-          {item.soldOut ? "품절" : "공동구매"}
+          {item.soldOut ? "품절" : "구매"}
         </button>
       </div>
     </article>
